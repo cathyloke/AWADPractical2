@@ -1,12 +1,26 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import { Table, Button } from "reactstrap";
+import {
+    Table,
+    Button,
+    Modal,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+    FormGroup,
+    Label,
+    Input,
+} from "reactstrap";
 import axios from "axios";
 export default class Example extends Component {
     constructor() {
         super();
         this.state = {
             posts: [],
+            newPostModal: false,
+            newPostData: { user_id: "", title: "", content: "" },
+            editPostModal: false,
+            editPostData: { id: "", title: "", content: "" },
         };
     }
 
@@ -33,6 +47,48 @@ export default class Example extends Component {
         this.loadPost();
     }
 
+    toggleNewPostModal() {
+        this.setState({ newPostModal: !this.state.newPostModal });
+    }
+
+    toggleEditPostModal(id, title, content) {
+        let { editPostData } = this.state;
+        editPostData.id = id;
+        editPostData.title = title;
+        editPostData.content = content;
+        this.setState({
+            editPostModal: !this.state.editPostModal,
+            editPostData,
+        });
+    }
+
+    addPost(user_id, title, content) {
+        axios
+            .post("http://127.0.0.1:8000/api/post/", {
+                user_id,
+                title,
+                content,
+            })
+            .then((response) => {
+                console.log(response);
+                this.loadPost();
+                this.toggleNewPostModal();
+            });
+    }
+
+    editPost(id, title, content) {
+        axios
+            .put("http://127.0.0.1:8000/api/post/" + id, {
+                title,
+                content,
+            })
+            .then((response) => {
+                // console.log(response);
+                this.loadPost();
+                this.toggleEditPostModal();
+            });
+    }
+
     render() {
         //rendering the posts into individual table row
         let posts = this.state.posts.map((post) => {
@@ -47,6 +103,13 @@ export default class Example extends Component {
                             size="sm"
                             outline
                             className="me-3 mr-2"
+                            onClick={() =>
+                                this.toggleEditPostModal(
+                                    post.id,
+                                    post.title,
+                                    post.content,
+                                )
+                            }
                         >
                             Edit
                         </Button>
@@ -68,6 +131,156 @@ export default class Example extends Component {
         console.log(this.state.posts);
         return (
             <div className="container">
+                {/* Add Post Modal */}
+                <Modal isOpen={this.state.newPostModal}>
+                    <ModalHeader
+                        toggle={() => {
+                            this.toggleNewPostModal.bind(this);
+                            // this.toggleNewPostModal();
+                        }}
+                    >
+                        Add New Post
+                    </ModalHeader>
+
+                    <ModalBody>
+                        <FormGroup>
+                            <Label for="user_id">User ID</Label>
+                            <Input
+                                id="user_id"
+                                value={this.state.newPostData.user_id}
+                                onChange={(e) => {
+                                    console.log(e.target.value);
+                                    let { newPostData } = this.state;
+                                    newPostData.user_id = e.target.value;
+                                    this.setState({ newPostData });
+                                }}
+                            ></Input>
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="title">Title</Label>
+                            <Input
+                                id="title"
+                                value={this.state.newPostData.title}
+                                onChange={(e) => {
+                                    console.log(e.target.value);
+                                    let { newPostData } = this.state;
+                                    newPostData.title = e.target.value;
+                                    this.setState({ newPostData });
+                                }}
+                            ></Input>
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="content">Content</Label>
+                            <Input
+                                id="content"
+                                value={this.state.newPostData.content}
+                                onChange={(e) => {
+                                    console.log(e.target.value);
+                                    let { newPostData } = this.state;
+                                    newPostData.content = e.target.value;
+                                    this.setState({ newPostData });
+                                }}
+                            ></Input>
+                        </FormGroup>
+                    </ModalBody>
+
+                    <ModalFooter>
+                        <Button
+                            variant="primary"
+                            onClick={() => {
+                                this.addPost(
+                                    this.state.newPostData.user_id,
+                                    this.state.newPostData.title,
+                                    this.state.newPostData.content,
+                                );
+                            }}
+                        >
+                            Save Post
+                        </Button>
+                        <Button
+                            variant="secondary"
+                            onClick={() => {
+                                this.toggleNewPostModal();
+                            }}
+                        >
+                            Cancel
+                        </Button>
+                    </ModalFooter>
+                </Modal>
+
+                {/* Edit Post Modal */}
+                <Modal isOpen={this.state.editPostModal}>
+                    <ModalHeader
+                        toggle={() => {
+                            this.toggleEditPostModal.bind(this);
+                        }}
+                    >
+                        Edit Post
+                    </ModalHeader>
+
+                    <ModalBody>
+                        <FormGroup>
+                            <Label for="title">Title</Label>
+                            <Input
+                                id="title"
+                                value={this.state.editPostData.title}
+                                onChange={(e) => {
+                                    console.log(e.target.value);
+                                    let { editPostData } = this.state;
+                                    editPostData.title = e.target.value;
+                                    this.setState({ editPostData });
+                                }}
+                            ></Input>
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="content">Content</Label>
+                            <Input
+                                id="content"
+                                value={this.state.editPostData.content}
+                                onChange={(e) => {
+                                    console.log(e.target.value);
+                                    let { editPostData } = this.state;
+                                    editPostData.content = e.target.value;
+                                    this.setState({ editPostData });
+                                }}
+                            ></Input>
+                        </FormGroup>
+                    </ModalBody>
+
+                    <ModalFooter>
+                        <Button
+                            color="success"
+                            onClick={() => {
+                                this.editPost(
+                                    this.state.editPostData.id,
+                                    this.state.editPostData.title,
+                                    this.state.editPostData.content,
+                                );
+                            }}
+                        >
+                            Edit Post
+                        </Button>
+                        <Button
+                            variant="secondary"
+                            onClick={() => {
+                                this.toggleEditPostModal();
+                            }}
+                        >
+                            Cancel
+                        </Button>
+                    </ModalFooter>
+                </Modal>
+
+                <Button
+                    color="primary"
+                    outline
+                    className="mb-5"
+                    onClick={() => {
+                        this.toggleNewPostModal();
+                    }}
+                >
+                    Add new post
+                </Button>
                 <Table>
                     <thead>
                         <tr>
