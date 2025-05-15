@@ -60318,89 +60318,6 @@ Portal.propTypes = propTypes;
 
 /***/ }),
 
-/***/ "./node_modules/reactstrap/esm/Table.js":
-/*!**********************************************!*\
-  !*** ./node_modules/reactstrap/esm/Table.js ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils */ "./node_modules/reactstrap/esm/utils.js");
-var _excluded = ["className", "cssModule", "size", "bordered", "borderless", "striped", "dark", "hover", "responsive", "tag", "responsiveTag", "innerRef"];
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-
-var propTypes = {
-  /** Adds border to all sides of table */
-  bordered: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
-  /** Removes all borders */
-  borderless: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
-  /** Adds custom class name to component */
-  className: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string),
-  /**  */
-  cssModule: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().object),
-  /** Makes the table dark */
-  dark: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
-  /** Enables a hover state on the rows within `<tbody>` */
-  hover: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
-  innerRef: prop_types__WEBPACK_IMPORTED_MODULE_2___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_2___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string), (prop_types__WEBPACK_IMPORTED_MODULE_2___default().object)]),
-  /** Responsive tables allow tables to be scrolled horizontally with ease */
-  responsive: prop_types__WEBPACK_IMPORTED_MODULE_2___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool), (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string)]),
-  responsiveTag: _utils__WEBPACK_IMPORTED_MODULE_3__.tagPropType,
-  /** Make tables more compact by cutting cell padding in half when setting size as sm. */
-  size: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string),
-  /** Adds zebra-striping to any table row within the `<tbody>` */
-  striped: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().bool),
-  /** Add custom tag to the component */
-  tag: _utils__WEBPACK_IMPORTED_MODULE_3__.tagPropType
-};
-function Table(props) {
-  var className = props.className,
-    cssModule = props.cssModule,
-    size = props.size,
-    bordered = props.bordered,
-    borderless = props.borderless,
-    striped = props.striped,
-    dark = props.dark,
-    hover = props.hover,
-    responsive = props.responsive,
-    _props$tag = props.tag,
-    Tag = _props$tag === void 0 ? 'table' : _props$tag,
-    _props$responsiveTag = props.responsiveTag,
-    ResponsiveTag = _props$responsiveTag === void 0 ? 'div' : _props$responsiveTag,
-    innerRef = props.innerRef,
-    attributes = _objectWithoutProperties(props, _excluded);
-  var classes = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.mapToCssModules)(classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'table', size ? 'table-' + size : false, bordered ? 'table-bordered' : false, borderless ? 'table-borderless' : false, striped ? 'table-striped' : false, dark ? 'table-dark' : false, hover ? 'table-hover' : false), cssModule);
-  var table = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Tag, _extends({}, attributes, {
-    ref: innerRef,
-    className: classes
-  }));
-  if (responsive) {
-    var responsiveClassName = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.mapToCssModules)(responsive === true ? 'table-responsive' : "table-responsive-".concat(responsive), cssModule);
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ResponsiveTag, {
-      className: responsiveClassName
-    }, table);
-  }
-  return table;
-}
-Table.propTypes = propTypes;
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Table);
-
-/***/ }),
-
 /***/ "./node_modules/reactstrap/esm/utils.js":
 /*!**********************************************!*\
   !*** ./node_modules/reactstrap/esm/utils.js ***!
@@ -62138,15 +62055,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Button.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Modal.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/ModalHeader.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/ModalBody.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/FormGroup.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Label.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Input.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/ModalFooter.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Table.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Modal.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/ModalHeader.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/ModalBody.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/FormGroup.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Label.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Input.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/ModalFooter.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/Button.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
@@ -62163,6 +62079,9 @@ function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.
 function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
 function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
+// Student Name: Loke Weng Yan
+// Student ID: 2103237
+// Student Test Group: A
 
 
 
@@ -62174,353 +62093,184 @@ var Example = /*#__PURE__*/function (_Component) {
     _classCallCheck(this, Example);
     _this = _callSuper(this, Example);
     _this.state = {
-      posts: [],
-      newPostModal: false,
-      newPostData: {
-        user_id: "",
-        title: "",
-        content: ""
-      },
-      editPostModal: false,
-      editPostData: {
-        id: "",
-        title: "",
-        content: ""
+      products: [],
+      newProductModal: false,
+      newProductData: {
+        productTitle: "",
+        productDesc: "",
+        manufacturingDate: new Date(""),
+        quantity: 0,
+        user_id: ""
       }
     };
     return _this;
   }
+
+  // Call the toggleNewProductModal() method before the component is mounted
   _inherits(Example, _Component);
   return _createClass(Example, [{
-    key: "loadPost",
-    value: function loadPost() {
-      var _this2 = this;
-      axios__WEBPACK_IMPORTED_MODULE_2___default().get("http://127.0.0.1:8000/api/post").then(function (response) {
-        _this2.setState({
-          posts: response.data
-        });
-
-        // console.log(response);
-      });
-    }
-  }, {
-    key: "deletePost",
-    value: function deletePost(id) {
-      var _this3 = this;
-      axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"]("http://127.0.0.1:8000/api/post/" + id).then(function (response) {
-        // console.log(response);
-        _this3.loadPost();
-      });
-    }
-  }, {
     key: "componentWillMount",
     value: function componentWillMount() {
-      this.loadPost();
+      this.toggleNewProductModal();
     }
+
+    // Method to toggle the Add New Product Modal
   }, {
-    key: "toggleNewPostModal",
-    value: function toggleNewPostModal() {
+    key: "toggleNewProductModal",
+    value: function toggleNewProductModal() {
       this.setState({
-        newPostModal: !this.state.newPostModal
+        newProductModal: !this.state.newProductModal
       });
     }
+
+    /**
+     * Method to send axios POST request to add new product into database
+     *
+     * RESTful API endpoint URL : http://127.0.0.1:8000/api/product/
+     * The HTTP request is routed to the ProductController method "store" based on the defined routes in the routes/api.php, which is:
+     * Route::post('/product', [ProductController::class, "store"]);
+     *
+     * The data input of product title, description, manufacturing date, quantity and user id will be sent in the request body
+     * The store method in the ProductController will create new Product in the product table in the database
+     */
   }, {
-    key: "toggleEditPostModal",
-    value: function toggleEditPostModal(id, title, content) {
-      var editPostData = this.state.editPostData;
-      editPostData.id = id;
-      editPostData.title = title;
-      editPostData.content = content;
-      this.setState({
-        editPostModal: !this.state.editPostModal,
-        editPostData: editPostData
-      });
-    }
-  }, {
-    key: "addPost",
-    value: function addPost(user_id, title, content) {
-      var _this4 = this;
-      axios__WEBPACK_IMPORTED_MODULE_2___default().post("http://127.0.0.1:8000/api/post/", {
-        user_id: user_id,
-        title: title,
-        content: content
+    key: "addProduct",
+    value: function addProduct(productTitle, productDesc, manufacturingDate, quantity, user_id) {
+      var _this2 = this;
+      axios__WEBPACK_IMPORTED_MODULE_2___default().post("http://127.0.0.1:8000/api/product/", {
+        productTitle: productTitle,
+        productDesc: productDesc,
+        manufacturingDate: manufacturingDate,
+        quantity: quantity,
+        user_id: user_id
       }).then(function (response) {
-        console.log(response);
-        _this4.loadPost();
-        _this4.toggleNewPostModal();
-      });
-    }
-  }, {
-    key: "editPost",
-    value: function editPost(id, title, content) {
-      var _this5 = this;
-      axios__WEBPACK_IMPORTED_MODULE_2___default().put("http://127.0.0.1:8000/api/post/" + id, {
-        title: title,
-        content: content
-      }).then(function (response) {
-        // console.log(response);
-        _this5.loadPost();
-        _this5.toggleEditPostModal();
+        // Response is returned back through the response.data
+        // console.log(response.data);
+
+        // Toggle the Add New Product Modal to close once the product is added successfully
+        _this2.toggleNewProductModal();
       });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this6 = this;
-      //rendering the posts into individual table row
-      var posts = this.state.posts.map(function (post) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-            children: post.id
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-            children: post.title
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-            children: post.content
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("td", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-              color: "success",
-              size: "sm",
-              outline: true,
-              className: "me-3 mr-2",
-              onClick: function onClick() {
-                return _this6.toggleEditPostModal(post.id, post.title, post.content);
-              },
-              children: "Edit"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-              color: "danger",
-              size: "sm",
-              outline: true,
-              className: "mr-2",
-              onClick: function onClick() {
-                return _this6.deletePost(post.id);
-              },
-              children: "Delete"
-            })]
-          })]
-        }, post.id);
-      });
-      console.log("This is the ");
-      console.log(this.state.posts);
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      var _this3 = this;
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         className: "container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
-          isOpen: this.state.newPostModal,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          isOpen: this.state.newProductModal,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
             toggle: function toggle() {
-              _this6.toggleNewPostModal.bind(_this6);
-              // this.toggleNewPostModal();
+              _this3.toggleNewProductModal.bind(_this3);
             },
-            children: "Add New Post"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            children: "Add New Product"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                "for": "productTitle",
+                children: "Product Title"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                id: "productTitle",
+                value: this.state.newProductData.productTitle,
+                onChange: function onChange(e) {
+                  console.log(e.target.value);
+                  var newProductData = _this3.state.newProductData;
+                  newProductData.productTitle = e.target.value;
+                  _this3.setState({
+                    newProductData: newProductData
+                  });
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                "for": "productDesc",
+                children: "Product Description"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                id: "productDesc",
+                type: "textarea",
+                value: this.state.newProductData.productDesc,
+                onChange: function onChange(e) {
+                  console.log(e.target.value);
+                  var newProductData = _this3.state.newProductData;
+                  newProductData.productDesc = e.target.value;
+                  _this3.setState({
+                    newProductData: newProductData
+                  });
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                "for": "manufacturingDate",
+                children: "Manufacturing Date"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                id: "manufacturingDate",
+                type: "date",
+                value: this.state.newProductData.manufacturingDate,
+                onChange: function onChange(e) {
+                  console.log(e.target.value);
+                  var newProductData = _this3.state.newProductData;
+                  newProductData.manufacturingDate = e.target.value;
+                  _this3.setState({
+                    newProductData: newProductData
+                  });
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                "for": "quantity",
+                children: "Quantity"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                id: "quantity",
+                value: this.state.newProductData.quantity,
+                onChange: function onChange(e) {
+                  console.log(e.target.value);
+                  var newProductData = _this3.state.newProductData;
+                  newProductData.quantity = e.target.value;
+                  _this3.setState({
+                    newProductData: newProductData
+                  });
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
                 "for": "user_id",
                 children: "User ID"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
                 id: "user_id",
-                value: this.state.newPostData.user_id,
+                value: this.state.newProductData.user_id,
                 onChange: function onChange(e) {
                   console.log(e.target.value);
-                  var newPostData = _this6.state.newPostData;
-                  newPostData.user_id = e.target.value;
-                  _this6.setState({
-                    newPostData: newPostData
-                  });
-                }
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                "for": "title",
-                children: "Title"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                id: "title",
-                value: this.state.newPostData.title,
-                onChange: function onChange(e) {
-                  console.log(e.target.value);
-                  var newPostData = _this6.state.newPostData;
-                  newPostData.title = e.target.value;
-                  _this6.setState({
-                    newPostData: newPostData
-                  });
-                }
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                "for": "content",
-                children: "Content"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                id: "content",
-                value: this.state.newPostData.content,
-                onChange: function onChange(e) {
-                  console.log(e.target.value);
-                  var newPostData = _this6.state.newPostData;
-                  newPostData.content = e.target.value;
-                  _this6.setState({
-                    newPostData: newPostData
+                  var newProductData = _this3.state.newProductData;
+                  newProductData.user_id = e.target.value;
+                  _this3.setState({
+                    newProductData: newProductData
                   });
                 }
               })]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-              variant: "primary",
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
+              color: "primary",
               onClick: function onClick() {
-                _this6.addPost(_this6.state.newPostData.user_id, _this6.state.newPostData.title, _this6.state.newPostData.content);
+                _this3.addProduct(_this3.state.newProductData.productTitle, _this3.state.newProductData.productDesc, _this3.state.newProductData.manufacturingDate, _this3.state.newProductData.quantity, _this3.state.newProductData.user_id);
               },
-              children: "Save Post"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+              children: "Add Product"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
               variant: "secondary",
               onClick: function onClick() {
-                _this6.toggleNewPostModal();
+                _this3.toggleNewProductModal();
               },
               children: "Cancel"
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
-          isOpen: this.state.editPostModal,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-            toggle: function toggle() {
-              _this6.toggleEditPostModal.bind(_this6);
-            },
-            children: "Edit Post"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                "for": "title",
-                children: "Title"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                id: "title",
-                value: this.state.editPostData.title,
-                onChange: function onChange(e) {
-                  console.log(e.target.value);
-                  var editPostData = _this6.state.editPostData;
-                  editPostData.title = e.target.value;
-                  _this6.setState({
-                    editPostData: editPostData
-                  });
-                }
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-                "for": "content",
-                children: "Content"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-                id: "content",
-                value: this.state.editPostData.content,
-                onChange: function onChange(e) {
-                  console.log(e.target.value);
-                  var editPostData = _this6.state.editPostData;
-                  editPostData.content = e.target.value;
-                  _this6.setState({
-                    editPostData: editPostData
-                  });
-                }
-              })]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-              color: "success",
-              onClick: function onClick() {
-                _this6.editPost(_this6.state.editPostData.id, _this6.state.editPostData.title, _this6.state.editPostData.content);
-              },
-              children: "Edit Post"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-              variant: "secondary",
-              onClick: function onClick() {
-                _this6.toggleEditPostModal();
-              },
-              children: "Cancel"
-            })]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          color: "primary",
-          outline: true,
-          className: "mb-5",
-          onClick: function onClick() {
-            _this6.toggleNewPostModal();
-          },
-          children: "Add new post"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_12__["default"], {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("thead", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-                children: "ID"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-                children: "Title"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-                children: "Content"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-                children: "Actions"
-              })]
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("tbody", {
-            children: posts
-          })]
-        })]
+        })
       });
     }
   }]);
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component); // export function Example() {
-//     return (
-//         <div className="container">
-//             <Table>
-//                 <thead>
-//                     <tr>
-//                         <th>ID</th>
-//                         <th>Title</th>
-//                         <th>Content</th>
-//                         <th>Actions</th>
-//                     </tr>
-//                 </thead>
-//                 <tbody>
-//                     <tr className="table-primary">
-//                         <td>1</td>
-//                         <td>React Post 1</td>
-//                         <td>This is the first post using Reactstrap</td>
-//                         <td>
-//                             <Button
-//                                 color="success"
-//                                 size="sm"
-//                                 outline
-//                                 className="me-3"
-//                             >
-//                                 Edit
-//                             </Button>
-//                             <Button color="danger" size="sm" outline>
-//                                 Delete
-//                             </Button>
-//                         </td>
-//                     </tr>
-//                 </tbody>
-//             </Table>
-//         </div>
-//     );
-// }
-// export function Example2() {
-//     return (
-//         <div className="container">
-//             <div className="row justify-content-center">
-//                 <div className="col-md-8">
-//                     <div className="card">
-//                         <div className="card-header">Example 2 Component</div>
-//                         <div className="card-body">
-//                             I'm an example 2 component!
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// }
-// if (document.getElementById("example")) {
-//     ReactDOM.render(<Example />, document.getElementById("example"));
-// }
-// if (document.getElementById("example2")) {
-//     ReactDOM.render(<Example2 />, document.getElementById("example2"));
-// }
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component); // DOM Rendering Logic
 
-if (document.getElementById("ExampleClass")) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Example, {}), document.getElementById("ExampleClass"));
+if (document.getElementById("example")) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Example, {}), document.getElementById("example"));
 }
 
 /***/ }),

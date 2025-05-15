@@ -1,7 +1,9 @@
+// Student Name: Loke Weng Yan
+// Student ID: 2103237
+// Student Test Group: A
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import {
-    Table,
     Button,
     Modal,
     ModalHeader,
@@ -16,169 +18,150 @@ export default class Example extends Component {
     constructor() {
         super();
         this.state = {
-            posts: [],
-            newPostModal: false,
-            newPostData: { user_id: "", title: "", content: "" },
-            editPostModal: false,
-            editPostData: { id: "", title: "", content: "" },
+            products: [],
+            newProductModal: false,
+            newProductData: {
+                productTitle: "",
+                productDesc: "",
+                manufacturingDate: new Date(""),
+                quantity: 0,
+                user_id: "",
+            },
         };
     }
 
-    loadPost() {
-        axios.get("http://127.0.0.1:8000/api/post").then((response) => {
-            this.setState({
-                posts: response.data,
-            });
-
-            // console.log(response);
-        });
-    }
-
-    deletePost(id) {
-        axios
-            .delete("http://127.0.0.1:8000/api/post/" + id)
-            .then((response) => {
-                // console.log(response);
-                this.loadPost();
-            });
-    }
-
+    // Call the toggleNewProductModal() method before the component is mounted
     componentWillMount() {
-        this.loadPost();
+        this.toggleNewProductModal();
     }
 
-    toggleNewPostModal() {
-        this.setState({ newPostModal: !this.state.newPostModal });
+    // Method to toggle the Add New Product Modal
+    toggleNewProductModal() {
+        this.setState({ newProductModal: !this.state.newProductModal });
     }
 
-    toggleEditPostModal(id, title, content) {
-        let { editPostData } = this.state;
-        editPostData.id = id;
-        editPostData.title = title;
-        editPostData.content = content;
-        this.setState({
-            editPostModal: !this.state.editPostModal,
-            editPostData,
-        });
-    }
-
-    addPost(user_id, title, content) {
+    /**
+     * Method to send axios POST request to add new product into database
+     *
+     * RESTful API endpoint URL : http://127.0.0.1:8000/api/product/
+     * The HTTP request is routed to the ProductController method "store" based on the defined routes in the routes/api.php, which is:
+     * Route::post('/product', [ProductController::class, "store"]);
+     *
+     * The data input of product title, description, manufacturing date, quantity and user id will be sent in the request body
+     * The store method in the ProductController will create new Product in the product table in the database
+     */
+    addProduct(
+        productTitle,
+        productDesc,
+        manufacturingDate,
+        quantity,
+        user_id,
+    ) {
         axios
-            .post("http://127.0.0.1:8000/api/post/", {
+            .post("http://127.0.0.1:8000/api/product/", {
+                productTitle,
+                productDesc,
+                manufacturingDate,
+                quantity,
                 user_id,
-                title,
-                content,
             })
             .then((response) => {
-                console.log(response);
-                this.loadPost();
-                this.toggleNewPostModal();
-            });
-    }
+                // Response is returned back through the response.data
+                // console.log(response.data);
 
-    editPost(id, title, content) {
-        axios
-            .put("http://127.0.0.1:8000/api/post/" + id, {
-                title,
-                content,
-            })
-            .then((response) => {
-                // console.log(response);
-                this.loadPost();
-                this.toggleEditPostModal();
+                // Toggle the Add New Product Modal to close once the product is added successfully
+                this.toggleNewProductModal();
             });
     }
 
     render() {
-        //rendering the posts into individual table row
-        let posts = this.state.posts.map((post) => {
-            return (
-                <tr key={post.id}>
-                    <td>{post.id}</td>
-                    <td>{post.title}</td>
-                    <td>{post.content}</td>
-                    <td>
-                        <Button
-                            color="success"
-                            size="sm"
-                            outline
-                            className="me-3 mr-2"
-                            onClick={() =>
-                                this.toggleEditPostModal(
-                                    post.id,
-                                    post.title,
-                                    post.content,
-                                )
-                            }
-                        >
-                            Edit
-                        </Button>
-                        <Button
-                            color="danger"
-                            size="sm"
-                            outline
-                            className="mr-2"
-                            onClick={() => this.deletePost(post.id)}
-                        >
-                            Delete
-                        </Button>
-                    </td>
-                </tr>
-            );
-        });
-
-        console.log("This is the ");
-        console.log(this.state.posts);
         return (
             <div className="container">
-                {/* Add Post Modal */}
-                <Modal isOpen={this.state.newPostModal}>
+                {/* Add Product Modal */}
+                <Modal isOpen={this.state.newProductModal}>
                     <ModalHeader
                         toggle={() => {
-                            this.toggleNewPostModal.bind(this);
-                            // this.toggleNewPostModal();
+                            this.toggleNewProductModal.bind(this);
                         }}
                     >
-                        Add New Post
+                        Add New Product
                     </ModalHeader>
 
                     <ModalBody>
+                        <FormGroup>
+                            <Label for="productTitle">Product Title</Label>
+                            <Input
+                                id="productTitle"
+                                value={this.state.newProductData.productTitle}
+                                onChange={(e) => {
+                                    console.log(e.target.value);
+                                    let { newProductData } = this.state;
+                                    newProductData.productTitle =
+                                        e.target.value;
+                                    this.setState({ newProductData });
+                                }}
+                            ></Input>
+                        </FormGroup>
+
+                        <FormGroup>
+                            <Label for="productDesc">Product Description</Label>
+                            <Input
+                                id="productDesc"
+                                type="textarea"
+                                value={this.state.newProductData.productDesc}
+                                onChange={(e) => {
+                                    console.log(e.target.value);
+                                    let { newProductData } = this.state;
+                                    newProductData.productDesc = e.target.value;
+                                    this.setState({ newProductData });
+                                }}
+                            ></Input>
+                        </FormGroup>
+
+                        <FormGroup>
+                            <Label for="manufacturingDate">
+                                Manufacturing Date
+                            </Label>
+                            <Input
+                                id="manufacturingDate"
+                                type="date"
+                                value={
+                                    this.state.newProductData.manufacturingDate
+                                }
+                                onChange={(e) => {
+                                    console.log(e.target.value);
+                                    let { newProductData } = this.state;
+                                    newProductData.manufacturingDate =
+                                        e.target.value;
+                                    this.setState({ newProductData });
+                                }}
+                            ></Input>
+                        </FormGroup>
+
+                        <FormGroup>
+                            <Label for="quantity">Quantity</Label>
+                            <Input
+                                id="quantity"
+                                value={this.state.newProductData.quantity}
+                                onChange={(e) => {
+                                    console.log(e.target.value);
+                                    let { newProductData } = this.state;
+                                    newProductData.quantity = e.target.value;
+                                    this.setState({ newProductData });
+                                }}
+                            ></Input>
+                        </FormGroup>
+
                         <FormGroup>
                             <Label for="user_id">User ID</Label>
                             <Input
                                 id="user_id"
-                                value={this.state.newPostData.user_id}
+                                value={this.state.newProductData.user_id}
                                 onChange={(e) => {
                                     console.log(e.target.value);
-                                    let { newPostData } = this.state;
-                                    newPostData.user_id = e.target.value;
-                                    this.setState({ newPostData });
-                                }}
-                            ></Input>
-                        </FormGroup>
-                        <FormGroup>
-                            <Label for="title">Title</Label>
-                            <Input
-                                id="title"
-                                value={this.state.newPostData.title}
-                                onChange={(e) => {
-                                    console.log(e.target.value);
-                                    let { newPostData } = this.state;
-                                    newPostData.title = e.target.value;
-                                    this.setState({ newPostData });
-                                }}
-                            ></Input>
-                        </FormGroup>
-                        <FormGroup>
-                            <Label for="content">Content</Label>
-                            <Input
-                                id="content"
-                                value={this.state.newPostData.content}
-                                onChange={(e) => {
-                                    console.log(e.target.value);
-                                    let { newPostData } = this.state;
-                                    newPostData.content = e.target.value;
-                                    this.setState({ newPostData });
+                                    let { newProductData } = this.state;
+                                    newProductData.user_id = e.target.value;
+                                    this.setState({ newProductData });
                                 }}
                             ></Input>
                         </FormGroup>
@@ -186,181 +169,35 @@ export default class Example extends Component {
 
                     <ModalFooter>
                         <Button
-                            variant="primary"
+                            color="primary"
                             onClick={() => {
-                                this.addPost(
-                                    this.state.newPostData.user_id,
-                                    this.state.newPostData.title,
-                                    this.state.newPostData.content,
+                                this.addProduct(
+                                    this.state.newProductData.productTitle,
+                                    this.state.newProductData.productDesc,
+                                    this.state.newProductData.manufacturingDate,
+                                    this.state.newProductData.quantity,
+                                    this.state.newProductData.user_id,
                                 );
                             }}
                         >
-                            Save Post
+                            Add Product
                         </Button>
                         <Button
                             variant="secondary"
                             onClick={() => {
-                                this.toggleNewPostModal();
+                                this.toggleNewProductModal();
                             }}
                         >
                             Cancel
                         </Button>
                     </ModalFooter>
                 </Modal>
-
-                {/* Edit Post Modal */}
-                <Modal isOpen={this.state.editPostModal}>
-                    <ModalHeader
-                        toggle={() => {
-                            this.toggleEditPostModal.bind(this);
-                        }}
-                    >
-                        Edit Post
-                    </ModalHeader>
-
-                    <ModalBody>
-                        <FormGroup>
-                            <Label for="title">Title</Label>
-                            <Input
-                                id="title"
-                                value={this.state.editPostData.title}
-                                onChange={(e) => {
-                                    console.log(e.target.value);
-                                    let { editPostData } = this.state;
-                                    editPostData.title = e.target.value;
-                                    this.setState({ editPostData });
-                                }}
-                            ></Input>
-                        </FormGroup>
-                        <FormGroup>
-                            <Label for="content">Content</Label>
-                            <Input
-                                id="content"
-                                value={this.state.editPostData.content}
-                                onChange={(e) => {
-                                    console.log(e.target.value);
-                                    let { editPostData } = this.state;
-                                    editPostData.content = e.target.value;
-                                    this.setState({ editPostData });
-                                }}
-                            ></Input>
-                        </FormGroup>
-                    </ModalBody>
-
-                    <ModalFooter>
-                        <Button
-                            color="success"
-                            onClick={() => {
-                                this.editPost(
-                                    this.state.editPostData.id,
-                                    this.state.editPostData.title,
-                                    this.state.editPostData.content,
-                                );
-                            }}
-                        >
-                            Edit Post
-                        </Button>
-                        <Button
-                            variant="secondary"
-                            onClick={() => {
-                                this.toggleEditPostModal();
-                            }}
-                        >
-                            Cancel
-                        </Button>
-                    </ModalFooter>
-                </Modal>
-
-                <Button
-                    color="primary"
-                    outline
-                    className="mb-5"
-                    onClick={() => {
-                        this.toggleNewPostModal();
-                    }}
-                >
-                    Add new post
-                </Button>
-                <Table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Title</th>
-                            <th>Content</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    {/* Inject the rendered row into the table */}
-                    <tbody>{posts}</tbody>
-                </Table>
             </div>
         );
     }
 }
 
-// export function Example() {
-//     return (
-//         <div className="container">
-//             <Table>
-//                 <thead>
-//                     <tr>
-//                         <th>ID</th>
-//                         <th>Title</th>
-//                         <th>Content</th>
-//                         <th>Actions</th>
-//                     </tr>
-//                 </thead>
-//                 <tbody>
-//                     <tr className="table-primary">
-//                         <td>1</td>
-//                         <td>React Post 1</td>
-//                         <td>This is the first post using Reactstrap</td>
-//                         <td>
-//                             <Button
-//                                 color="success"
-//                                 size="sm"
-//                                 outline
-//                                 className="me-3"
-//                             >
-//                                 Edit
-//                             </Button>
-//                             <Button color="danger" size="sm" outline>
-//                                 Delete
-//                             </Button>
-//                         </td>
-//                     </tr>
-//                 </tbody>
-//             </Table>
-//         </div>
-//     );
-// }
-
-// export function Example2() {
-//     return (
-//         <div className="container">
-//             <div className="row justify-content-center">
-//                 <div className="col-md-8">
-//                     <div className="card">
-//                         <div className="card-header">Example 2 Component</div>
-
-//                         <div className="card-body">
-//                             I'm an example 2 component!
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// }
-
-// if (document.getElementById("example")) {
-//     ReactDOM.render(<Example />, document.getElementById("example"));
-// }
-
-// if (document.getElementById("example2")) {
-//     ReactDOM.render(<Example2 />, document.getElementById("example2"));
-// }
-
-if (document.getElementById("ExampleClass")) {
-    ReactDOM.render(<Example />, document.getElementById("ExampleClass"));
+// DOM Rendering Logic
+if (document.getElementById("example")) {
+    ReactDOM.render(<Example />, document.getElementById("example"));
 }
